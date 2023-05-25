@@ -1,0 +1,34 @@
+{
+  "name": "@nrd/fua.app.rc",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "fua.app.rc": "./src/launch.rc.js",
+    "fua.app.rc.healthcheck": "./src/scripts/rc.healthcheck.js"
+  },
+  "files": [
+    "src/*",
+    "data/*"
+  ],
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "@nrd/fua.core.util": "^1.0.0",
+    "@nrd/fua.ids.agent.connector": "^1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^8.2.1",
+    "expect": "^26.6.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/launch.rc.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@git02.int.nsc.ag:10022/research/fua/app/rc-connector.git"
+  },
+  "keywords": [],
+  "author": "spetrac@nicos-ag.com",
+  "license": "UNLICENSED"
+}
