@@ -1,16 +1,16 @@
 const
-    util             = require('@nrd/fua.core.util'),
-    ConnectorAgent   = require('@nrd/fua.ids.agent.connector'),
-    initializeConfig = require('./config/config.initialize.js'),
-    RCConnectorApp   = require('./app.rc.js'),
-    RCConnectorLab   = require('./lab.rc.js');
+    util              = require('@nrd/fua.core.util'),
+    ConnectorAgent    = require('@nrd/fua.ids.agent.connector'),
+    RCConnectorConfig = require('./config.rc.js'),
+    RCConnectorApp    = require('./app.rc.js'),
+    RCConnectorLab    = require('./lab.rc.js');
 
 (async function LaunchRCConnector() {
 
     /* 1. Initialize the config for the agent: */
 
     util.logText('initialize config');
-    const config = await initializeConfig();
+    const config = await RCConnectorConfig();
 
     /* 2. Construct a server agent for your setup: */
 
