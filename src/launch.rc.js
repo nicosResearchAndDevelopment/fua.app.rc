@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const
     util              = require('@nrd/fua.core.util'),
     ConnectorAgent    = require('@nrd/fua.ids.agent.connector'),
