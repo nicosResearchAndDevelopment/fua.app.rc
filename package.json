@@ -1,6 +1,6 @@
 {
   "name": "@nrd/fua.app.rc",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "bin": {
     "fua.app.rc": "./src/launch.rc.js",
@@ -14,7 +14,9 @@
     "express": "^4.17.1",
     "node-fetch": "^2.6.1",
     "@nrd/fua.core.util": "^1.0.0",
-    "@nrd/fua.ids.agent.connector": "^1.0.0"
+    "@nrd/fua.ids.agent.connector": "^1.0.0",
+    "@nrd/fua.module.persistence.inmemory": "^1.0.0",
+    "@nrd/fua.module.persistence.filesystem": "^1.0.0"
   },
   "devDependencies": {
     "mocha": "^8.2.1",
