@@ -1,0 +1,9 @@
+{
+  "server": {
+    "schema": "https",
+    "options": {}
+  },
+  "connector": {
+    "uri": "http://localhost/"
+  }
+}

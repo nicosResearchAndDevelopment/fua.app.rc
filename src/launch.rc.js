@@ -1,7 +1,8 @@
 const
     util              = require('@nrd/fua.core.util'),
     ConnectorAgent    = require('@nrd/fua.ids.agent.connector'),
-    RCConnectorConfig = require('./config.rc.js'),
+    // RCConnectorConfig = require('./config/config.init.js'),
+    RCConnectorConfig = require('./config/config.read.js'),
     RCConnectorApp    = require('./app.rc.js'),
     RCConnectorLab    = require('./lab.rc.js');
 
