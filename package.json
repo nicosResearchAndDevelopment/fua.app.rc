@@ -13,7 +13,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "node-fetch": "^2.6.1",
-    "@nrd/fua.core.app": "^1.0.1",
+    "@nrd/fua.core.app": "^1.0.2",
     "@nrd/fua.core.util": "^1.0.0",
     "@nrd/fua.ids.agent.connector": "^1.0.0",
     "@nrd/fua.module.persistence.inmemory": "^1.0.0",
