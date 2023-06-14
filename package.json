@@ -1,6 +1,6 @@
 {
   "name": "@nrd/fua.app.rc",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "bin": {
     "fua.app.rc": "./src/launch.rc.js",
