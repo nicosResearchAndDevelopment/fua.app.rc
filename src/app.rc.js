@@ -37,26 +37,12 @@ module.exports = async function RCConnectorApp(
 
     agent.io.on('connection', (socket) => {
 
-        function createSocketError(err) {
-            const socketErr = {};
-            if (util.isString(err)) {
-                socketErr.message = err;
-            } else if (util.isObject(err)) {
-                if (err.message) socketErr.message = err.message;
-                if (err.code) socketErr.code = err.code;
-                if (err.name) socketErr.name = err.name;
-            } else {
-                socketErr.message = 'unknown';
-            }
-            return socketErr;
-        }
-
         socket.on('refreshDAT', async (param, callback) => {
             try {
                 const result = await agent.getDAT({...param, refresh: true});
                 callback(null, result)
             } catch (err) {
-                callback(createSocketError(err));
+                callback(util.errorToJSON(err));
             }
         });
 
@@ -65,7 +51,7 @@ module.exports = async function RCConnectorApp(
                 const result = agent.createSelfDescription(param);
                 callback(null, result);
             } catch (err) {
-                callback(createSocketError(err));
+                callback(util.errorToJSON(err));
             }
         });
 
@@ -88,7 +74,7 @@ module.exports = async function RCConnectorApp(
                 });
                 callback(null, result);
             } catch (err) {
-                callback(createSocketError(err));
+                callback(util.errorToJSON(err));
             }
         });
 
@@ -100,7 +86,7 @@ module.exports = async function RCConnectorApp(
                     ? await response.json() : await response.text();
                 callback(null, result);
             } catch (err) {
-                callback(createSocketError(err));
+                callback(util.errorToJSON(err));
             }
         });
 
