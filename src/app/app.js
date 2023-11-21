@@ -3,9 +3,9 @@ const
     is     = require('@nrd/fua.core.is'),
     tty    = require('@nrd/fua.core.tty'),
     ts     = require('@nrd/fua.core.ts'),
-    util   = require('@nrd/fua.core.util');
+    errors = require('@nrd/fua.core.errors');
 
-module.exports = async function ({server: {app, io}, rc, ...config}) {
+module.exports = async function ({server: {app, io}, connector, ...config}) {
 
     app.use(function (request, response, next) {
         tty.log.request(request);
@@ -23,10 +23,10 @@ module.exports = async function ({server: {app, io}, rc, ...config}) {
     });
 
     app.get('/about', (request, response, next) => {
-        rc.emit('GET.SelfDescription', request);
+        connector.emit('GET.SelfDescription', request);
         const
             param           = request.body,
-            selfDescription = rc.createSelfDescription(param),
+            selfDescription = connector.createSelfDescription(param),
             payload         = JSON.stringify(selfDescription);
         response.type('json').send(payload);
     });
@@ -35,19 +35,19 @@ module.exports = async function ({server: {app, io}, rc, ...config}) {
 
         socket.on('refreshDAT', async (param, callback) => {
             try {
-                const result = await rc.getDAT({...param, refresh: true});
+                const result = await connector.getDAT({...param, refresh: true});
                 callback(null, result)
             } catch (err) {
-                callback(util.errorToJSON(err));
+                callback(errors.toJSON(err));
             }
         });
 
         socket.on('getSelfDescriptionFromRC', async (param, callback) => {
             try {
-                const result = rc.createSelfDescription(param);
+                const result = connector.createSelfDescription(param);
                 callback(null, result);
             } catch (err) {
-                callback(util.errorToJSON(err));
+                callback(errors.toJSON(err));
             }
         });
 
@@ -56,33 +56,33 @@ module.exports = async function ({server: {app, io}, rc, ...config}) {
                 const result = null;
                 await new Promise((resolve, reject) => {
                     let onSelfDescription, cancelTimeout;
-                    rc.on('GET.SelfDescription', onSelfDescription = (request) => {
+                    connector.on('GET.SelfDescription', onSelfDescription = (request) => {
                         if (request.ip === param.requester) {
-                            rc.off('GET.SelfDescription', onSelfDescription);
+                            connector.off('GET.SelfDescription', onSelfDescription);
                             clearTimeout(cancelTimeout);
                             resolve();
                         }
                     });
                     cancelTimeout = setTimeout(() => {
-                        rc.off('GET.SelfDescription', onSelfDescription);
+                        connector.off('GET.SelfDescription', onSelfDescription);
                         reject('timeout reached');
                     }, 1000 * (param.timeout || 1));
                 });
                 callback(null, result);
             } catch (err) {
-                callback(util.errorToJSON(err));
+                callback(errors.toJSON(err));
             }
         });
 
         socket.on('fetchApplicantResource', async (param, callback) => {
             try {
-                const response    = await rc.fetch(param.url, param);
+                const response    = await connector.fetch(param.url, param);
                 const contentType = response.headers.get('content-type') || '';
                 const result      = /application\/(?:\w+\+)?json/.test(contentType)
                     ? await response.json() : await response.text();
                 callback(null, result);
             } catch (err) {
-                callback(util.errorToJSON(err));
+                callback(errors.toJSON(err));
             }
         });
 
