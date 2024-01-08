@@ -11,7 +11,7 @@
   ],
   "dependencies": {
     "express": "^4.17.1",
-    "node-fetch": "^3.3.2",
+    "node-fetch": "2.x",
     "@nrd/fua.core.assert": "^1.0.0",
     "@nrd/fua.core.is": "^1.0.4",
     "@nrd/fua.core.errors": "^1.0.1",
@@ -19,6 +19,9 @@
     "@nrd/fua.core.ts": "^1.0.1",
     "@nrd/fua.ids.client.daps": "^1.0.1",
     "@nrd/fua.agent.app": "^1.0.0"
+  },
+  "overrides": {
+    "whatswg-url": "14.x"
   },
   "devDependencies": {
     "mocha": "^8.2.1",
