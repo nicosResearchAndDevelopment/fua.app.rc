@@ -1,6 +1,5 @@
 const
     util    = require('@nrd/fua.core.util'),
-    fetch   = require('node-fetch'),
     express = require('express');
 
 module.exports = async function RCConnectorApp(
