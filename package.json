@@ -10,7 +10,7 @@
     "src/*"
   ],
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.21.1",
     "node-fetch": "2.x",
     "@nrd/fua.core.assert": "^1.0.0",
     "@nrd/fua.core.is": "^1.0.4",
