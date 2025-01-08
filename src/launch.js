@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const
-    App       = require('@nrd/fua.agent.app'),
+    App       = require('@fua/agent.app'),
     Connector = require('./app/connector.js');
 
 App.launch({

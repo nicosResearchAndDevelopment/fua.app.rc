@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-require('@nrd/fua.core.app').launch({
+require('@fua/core.app').launch({
     config: {
         default: require('./config/config.rc.js'),
         // load:    'C:\\Users\\spetrac\\Fua\\fua-js\\app\\rc-connector\\data\\config.json'
     },
     agent:  {
-        class:  require('@nrd/fua.ids.agent.connector'),
+        class:  require('@fua/ids.agent.connector'),
         param:  {
             app:       true,
             io:        true,

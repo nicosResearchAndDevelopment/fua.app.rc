@@ -1,5 +1,5 @@
 {
-  "name": "@nrd/fua.app.rc",
+  "name": "@fua/app.rc",
   "version": "1.1.0",
   "description": "",
   "bin": {
@@ -12,31 +12,35 @@
   "dependencies": {
     "express": "^4.21.1",
     "node-fetch": "2.x",
-    "@nrd/fua.core.assert": "^1.0.0",
-    "@nrd/fua.core.is": "^1.0.4",
-    "@nrd/fua.core.errors": "^1.0.1",
-    "@nrd/fua.core.tty": "^1.0.0",
-    "@nrd/fua.core.ts": "^1.0.1",
-    "@nrd/fua.ids.client.daps": "^1.0.1",
-    "@nrd/fua.agent.app": "^1.0.0"
+    "@fua/core.assert": "^1.0.0",
+    "@fua/core.is": "^1.0.4",
+    "@fua/core.errors": "^1.0.1",
+    "@fua/core.tty": "^1.0.0",
+    "@fua/core.ts": "^1.0.1",
+    "@fua/client.daps": "^1.0.1",
+    "@fua/agent.app": "^1.0.0"
   },
   "overrides": {
     "whatswg-url": "14.x"
   },
   "devDependencies": {
-    "mocha": "^8.2.1",
-    "expect": "^26.6.2"
+    "expect": "26.x",
+    "mocha": "10.x"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "node src/launch.js",
     "healthcheck": "node src/script/healthcheck.js"
   },
+  "mocha": {
+    "bail": false,
+    "recursive": false,
+    "spec": "test/*.test.js"
+  },
   "repository": {
     "type": "git",
-    "url": "ssh://git@git02.int.nsc.ag:10022/research/fua/app/rc.git"
+    "url": "ssh://git@github.com:nicosResearchAndDevelopment/fua.app.rc.git"
   },
-  "keywords": [],
-  "author": "spetrac@nicos-ag.com",
-  "license": "UNLICENSED"
+  "author": "Simon Petrac <pfoerdie@gmail.com>",
+  "license": "MIT"
 }

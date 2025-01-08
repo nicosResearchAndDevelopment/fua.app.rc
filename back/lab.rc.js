@@ -1,5 +1,5 @@
 const
-    util = require('@nrd/fua.core.util');
+    util = require('@fua/core.util');
 
 module.exports = async function RCConnectorLab(
     {

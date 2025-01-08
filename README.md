@@ -1,1 +1,1 @@
-# @nrd/fua.app.rc
+# @fua/app.rc

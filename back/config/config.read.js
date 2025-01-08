@@ -1,5 +1,5 @@
 const
-    util                         = require('@nrd/fua.core.util'),
+    util                         = require('@fua/core.util'),
     {assert, isString, isObject} = util,
     isServerSchema               = util.StringValidator(/^https?$/),
     isServerHostname             = util.StringValidator(/^[\w\-]+(?:\.[\w\-]+)*$/),

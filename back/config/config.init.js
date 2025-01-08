@@ -1,5 +1,5 @@
 const
-    util        = require('@nrd/fua.core.util'),
+    util        = require('@fua/core.util'),
     http        = require('http'),
     express     = require('express'),
     ABOUT_PATHS = ['/', '/about', '/meta'],
