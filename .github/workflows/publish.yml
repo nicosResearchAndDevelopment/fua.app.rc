@@ -7,6 +7,12 @@ on:
   release:
     types: [created]
 
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ghcr.io
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: ${{ github.repository }}
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
